@@ -1,0 +1,45 @@
+SYLLABUS LINK INSERT MANUAL
+===========================
+
+Purpose:
+This file explains how to add the actual syllabus PDF links to the Download buttons in syllabus.html.
+
+1) Open the file:
+   syllabus.html
+
+2) Find these download buttons in the page:
+   - 2019 Full Curriculum (All Years)
+   - 2024 First Year
+   - 2024 2nd to 4th Year
+
+3) Replace the placeholder link in each button:
+   Old:
+   <a href="#" class="btn-primary syllabus-download" data-label="2019 Full Curriculum">Download</a>
+
+   New:
+   <a href="files/2019-scheme-syllabus.pdf" class="btn-primary syllabus-download" data-label="2019 Full Curriculum">Download</a>
+
+4) Recommended file folder:
+   Create a folder named:
+   files/
+
+   Inside it place the syllabus PDFs, for example:
+   - 2019-scheme-syllabus.pdf
+   - 2024-first-year.pdf
+   - 2024-second-fourth-year.pdf
+
+5) Final link pattern:
+   <a href="files/your-syllabus-file.pdf" class="btn-primary syllabus-download" data-label="Your label">Download</a>
+
+6) Keep the button label and data-label text matching the same section.
+
+7) After editing, open the page in a browser and make sure:
+   - the program selector works
+   - the scheme selector works
+   - only the correct syllabus section shows up
+   - the Download button opens the correct file
+
+Example summary:
+- 2019 Full Curriculum -> files/2019-scheme-syllabus.pdf
+- 2024 First Year -> files/2024-first-year.pdf
+- 2024 2nd to 4th Year -> files/2024-second-fourth-year.pdf

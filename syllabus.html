@@ -4,21 +4,173 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Syllabus - EEE Department</title>
+  <link rel="icon" type="image/jpg" href="images/Logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="main" style="padding: 80px 40px; text-align: center;">
-    <h1>Syllabus</h1>
-    <p>This is a placeholder page for the EEE department syllabus. Replace this content with your actual syllabus links and descriptions.</p>
-    <div style="max-width: 720px; margin: 40px auto; text-align: left; color: var(--ivory);">
-      <h2>Course Syllabus</h2>
-      <ul style="list-style: disc; padding-left: 1.5rem;">
-        <li>B.Tech EEE Curriculum</li>
-        <li>M.Tech Electrical Drives and Control Curriculum</li>
-        <li>Laboratory and Elective Course Structure</li>
-      </ul>
-    </div>
-    <a href="index.html" class="btn-primary">Back to Home</a>
+  <svg class="grain" width="100%" height="100%">
+    <filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="5" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter>
+    <rect width="100%" height="100%" filter="url(#n)"/>
+  </svg>
+  <div class="atmosphere"></div>
+
+  <nav class="top-nav" id="topNav">
+    <a href="index.html" class="nav-brand">EEE<span>DEPARTMENT</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#hero">HOME</a></li>
+      <li><a href="index.html#about_us">ABOUT US</a></li>
+      <li><a href="index.html#programs">PROGRAMS</a></li>
+      <li><a href="index.html#more">MORE</a></li>
+    </ul>
+    <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode" type="button">
+      <span class="theme-icon theme-icon-moon">🌙</span>
+      <span class="theme-icon theme-icon-sun">☀</span>
+    </button>
+  </nav>
+
+  <main class="main syllabus-shell">
+    <section class="hero syllabus-hero" id="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        <span>Department of</span>
+      </div>
+      <h1>ELECTRICAL AND ELECTRONICS ENGINEERING<br><em>SYLLABUS</em></h1>
+      <span class="pkd-card">GEC PALAKKAD</span>
+      <p class="hero-sub">
+        Browse the curriculum by programme, select the scheme, and choose the appropriate year group for the syllabus section you need.
+      </p>
+
+      <div class="selector-stack">
+        <div class="hero-ctas program-switcher" role="group" aria-label="Select Programme">
+          <button class="btn-secondary program-switch" type="button" data-program="btech" aria-pressed="false">B.Tech</button>
+          <button class="btn-secondary program-switch" type="button" data-program="mtech" aria-pressed="false">M.Tech</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-center reveal hidden" id="schemesPanel">
+      <p class="section-tag">Curriculum Navigation</p>
+      <h2 class="section-title">Choose your <strong>scheme</strong></h2>
+      <div class="selector-stack">
+        <div class="hero-ctas syllabus-switcher" role="group" aria-label="Select Syllabus Scheme">
+          <button class="btn-secondary scheme-switch" type="button" data-scheme="2019" aria-pressed="false">2019 Scheme</button>
+          <button class="btn-secondary scheme-switch" type="button" data-scheme="2024" aria-pressed="false">2024 Scheme</button>
+        </div>
+        <button class="btn-secondary back-button" type="button" data-step="program">Back</button>
+      </div>
+    </section>
+
+    <section class="section reveal hidden" id="all-years-2019">
+      <div class="scheme-detail-card">
+        <p class="section-tag">2019 Scheme</p>
+        <h2 class="section-title">FULL 4-YEAR <strong>Curriculum</strong></h2>
+        <p class="section-body">
+        </p>
+        <div class="detail-actions">
+          <a href="files/2019-full-curriculum.pdf" class="btn-primary syllabus-download" data-label="2019 Full Curriculum">Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal hidden" id="first-year-2024">
+      <div class="scheme-detail-card">
+        <p class="section-tag">2024 Scheme</p>
+        <h2 class="section-title">FIRST YEAR <strong>Curriculum</strong></h2>
+        <p class="section-body">
+        </p>
+        <div class="detail-actions">
+          <a href="files/2024-first-year.pdf" class="btn-primary syllabus-download" data-label="2024 First Year">Download</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal hidden" id="second-fourth-2024">
+      <div class="scheme-detail-card">
+        <p class="section-tag">2024 Scheme</p>
+        <h2 class="section-title">2nd to 4th YEAR <strong>Curriculum</strong></h2>
+        <p class="section-body">
+        </p>
+        <div class="detail-actions">
+          <a href="files/2024-second-fourth-year.pdf" class="btn-primary syllabus-download" data-label="2024 2nd to 4th Year">Download</a>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <script src="script.js"></script>
+  <script>
+    const programButtons = document.querySelectorAll('.program-switch');
+    const schemeButtons = document.querySelectorAll('.scheme-switch');
+    const schemesPanel = document.getElementById('schemesPanel');
+    const detailSections = [
+      document.getElementById('all-years-2019'),
+      document.getElementById('first-year-2024'),
+      document.getElementById('second-fourth-2024')
+    ];
+    const programSwitcher = document.querySelector('.program-switcher');
+    const backButton = document.querySelector('.back-button');
+
+    const state = {
+      program: null,
+      scheme: null
+    };
+
+    function syncButtonStates(buttons, activeButton) {
+      buttons.forEach(btn => {
+        const isActive = btn === activeButton;
+        btn.classList.toggle('active', isActive);
+        btn.classList.toggle('btn-primary', isActive);
+        btn.classList.toggle('btn-secondary', !isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+    }
+
+    function refreshDisplay() {
+      const haveProgram = Boolean(state.program);
+      const haveSelection = Boolean(state.program && state.scheme);
+
+      programSwitcher.classList.toggle('hidden', haveProgram);
+      schemesPanel.classList.toggle('hidden', !haveProgram);
+
+      detailSections.forEach(section => {
+        const shouldShow = haveSelection && section.id.includes(state.scheme);
+        section.classList.toggle('hidden', !shouldShow);
+      });
+    }
+
+    programButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        state.program = button.dataset.program;
+        state.scheme = null;
+        syncButtonStates(programButtons, button);
+        syncButtonStates(schemeButtons, null);
+        refreshDisplay();
+      });
+    });
+
+    schemeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (!state.program) return;
+        state.scheme = button.dataset.scheme;
+        syncButtonStates(schemeButtons, button);
+        refreshDisplay();
+      });
+    });
+
+    if (backButton) {
+      backButton.addEventListener('click', () => {
+        state.program = null;
+        state.scheme = null;
+        syncButtonStates(programButtons, null);
+        syncButtonStates(schemeButtons, null);
+        refreshDisplay();
+      });
+    }
+
+    refreshDisplay();
+  </script>
 </body>
 </html>

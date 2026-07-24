@@ -238,6 +238,7 @@ const annualOpts = document.querySelectorAll('.price-option.annual');
 let annual = false;
 
 function setPricing() {
+  if (!pToggle || !mLabel || !aLabel || !saveBadge) return;
   annual = !annual;
   pToggle.classList.toggle('annual', annual);
   pToggle.setAttribute('aria-checked', annual);
@@ -247,40 +248,48 @@ function setPricing() {
   monthlyOpts.forEach(el => el.classList.toggle('active', !annual));
   annualOpts.forEach(el => el.classList.toggle('active', annual));
 }
-pToggle.addEventListener('click', setPricing);
-pToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPricing(); } });
+
+if (pToggle) {
+  pToggle.addEventListener('click', setPricing);
+  pToggle.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setPricing(); } });
+}
 
 // ── FAQ accordion ──
 const faqItems = document.querySelectorAll('.faq-item');
 const faqToggleAll = document.getElementById('faqToggleAll');
 let allExpanded = false;
 
-document.querySelectorAll('.faq-question').forEach(btn => {
-  btn.addEventListener('click', () => {
-    btn.parentElement.classList.toggle('open');
-    updateFaqToggleLabel();
+if (faqItems.length) {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.parentElement.classList.toggle('open');
+      updateFaqToggleLabel();
+    });
   });
-});
+}
 
-faqToggleAll.addEventListener('click', () => {
-  allExpanded = !allExpanded;
-  if (allExpanded) {
-    // Staggered expand — slow cascade, each waits for the previous to start breathing
-    faqItems.forEach((item, i) => {
-      setTimeout(() => item.classList.add('open'), i * 220);
-    });
-  } else {
-    // Staggered collapse — reverse order
-    const total = faqItems.length;
-    faqItems.forEach((item, i) => {
-      setTimeout(() => item.classList.remove('open'), (total - 1 - i) * 60);
-    });
-  }
-  // Update label after all animations complete
-  setTimeout(updateFaqToggleLabel, faqItems.length * 220 + 100);
-});
+if (faqToggleAll) {
+  faqToggleAll.addEventListener('click', () => {
+    allExpanded = !allExpanded;
+    if (allExpanded) {
+      // Staggered expand — slow cascade, each waits for the previous to start breathing
+      faqItems.forEach((item, i) => {
+        setTimeout(() => item.classList.add('open'), i * 220);
+      });
+    } else {
+      // Staggered collapse — reverse order
+      const total = faqItems.length;
+      faqItems.forEach((item, i) => {
+        setTimeout(() => item.classList.remove('open'), (total - 1 - i) * 60);
+      });
+    }
+    // Update label after all animations complete
+    setTimeout(updateFaqToggleLabel, faqItems.length * 220 + 100);
+  });
+}
 
 function updateFaqToggleLabel() {
+  if (!faqToggleAll || !faqItems.length) return;
   const openCount = document.querySelectorAll('.faq-item.open').length;
   allExpanded = openCount === faqItems.length;
   faqToggleAll.textContent = allExpanded ? 'Collapse All' : 'Expand All';

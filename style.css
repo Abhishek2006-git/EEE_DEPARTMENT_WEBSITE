@@ -536,6 +536,86 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
   opacity: 0; transform: translateY(16px);
   animation: fadeUp 1.4s var(--silk-ease) 0.8s forwards;
 }
+.syllabus-shell {
+  padding: 0 0 80px;
+}
+.syllabus-hero {
+  min-height: 78vh;
+  padding-top: 120px;
+}
+.selector-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+.program-switcher,
+.syllabus-switcher {
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+}
+.program-switch,
+.scheme-switch {
+  min-width: 170px;
+}
+.program-switch.active,
+.scheme-switch.active {
+  background: linear-gradient(135deg, var(--silver), var(--slate-light));
+  color: var(--base-deep);
+  border-color: transparent;
+  box-shadow: 0 10px 32px rgba(176,184,196,0.18);
+}
+.detail-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-top: 22px;
+}
+.syllabus-download {
+  min-width: 170px;
+  border-radius: 16px;
+}
+.back-button {
+  min-width: 120px;
+}
+.hidden {
+  display: none !important;
+}
+.scheme-panels {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 22px;
+}
+.scheme-card {
+  display: none;
+}
+.scheme-card.active {
+  display: flex;
+}
+.scheme-links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  width: 100%;
+}
+.scheme-link {
+  width: 100%;
+  text-align: center;
+  padding: 14px 18px;
+}
+.scheme-detail-card {
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 30px;
+  padding: 40px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
 .hero-metrics {
   display: flex; justify-content: center; gap: 56px; margin-top: 72px;
   opacity: 0; transform: translateY(16px);
@@ -908,6 +988,13 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
 }
 
 @media (max-width: 768px) {
+  .detail-actions {
+    justify-content: center;
+  }
+  .syllabus-download {
+    width: 100%;
+    max-width: 280px;
+  }
   .main { padding: 0 16px; }
   .top-nav {
     padding: 12px 16px;

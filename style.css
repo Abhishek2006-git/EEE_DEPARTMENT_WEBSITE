@@ -523,6 +523,14 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
   opacity: 0; transform: translateY(24px);
   animation: fadeUp 1.4s var(--silk-ease) 0.4s forwards;
 }
+
+.h1-large{
+  display: block;
+  }
+.h1-small{
+  display: none;
+}
+
 .hero h2 {
   font-style: normal; font-weight: 600; font-size: clamp(1.4rem, 6.5vw, 3.5rem);
   background: linear-gradient(135deg, var(--ivory), var(--silver), var(--slate-light));
@@ -1064,6 +1072,13 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
   }
   .hero-badge{
     margin-top: 30%;
+  }
+  .h1-large{
+    display: none;
+  }
+  .h1-small{
+    display: block;
+    line-height: 1.45 !important;
   }
 
   #about_us{margin-bottom: -8rem;}

@@ -191,6 +191,10 @@ function applyTheme(dark) {
   themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
   themeToggle.classList.toggle('active', dark);
   themeToggle.classList.toggle('flipped', !dark);
+
+  // --- ADDED: Swap down arrow image ---
+  const downBtn = document.querySelector('.down-btn') || document.getElementById('down-btn');
+  if (downBtn) downBtn.src = dark ? 'images/Wdown-btn.png' : 'images/down-btn.png';
 }
 
 function animateThemeSwitch(nextDark) {

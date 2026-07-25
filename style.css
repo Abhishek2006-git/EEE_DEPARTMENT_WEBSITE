@@ -477,6 +477,14 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
   padding: 150px 0 50px; position: relative; bottom: 0px; margin-bottom: 0 !important; user-select: none; 
 
 }
+
+  .h1-small{
+    display: none;
+  }
+  .h1-large{
+    display: block;
+  }
+
 .hero .pkd-card{
   font-size: 20px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--slate-warm); opacity: 1; margin-top: 1.2rem;
@@ -583,6 +591,7 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
   align-items: center;
   gap: 14px;
   width: 100%;
+  margin-top: 2rem;
 }
 .program-switcher,
 .syllabus-switcher {
@@ -1080,6 +1089,10 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
     display: block;
     line-height: 1.45 !important;
   }
+  .selector-slack{
+    margin-top: 0%;
+  }
+
 
   #about_us{margin-bottom: -8rem;}
   #programs{margin-bottom: -8rem;}
@@ -1151,6 +1164,17 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
     align-items: center;
     gap: 24px;
   }
+
+  .h1-large{
+    display: none;
+  }
+  .h1-small{
+    display: block;
+  }
+  .hero-badge{
+    margin-top: 0rem;
+  }
+
   #more .left,
   #more .right {
     width: 100%;
@@ -1237,4 +1261,21 @@ body.menu-open .top-nav { background: rgba(15,17,21,0.95); backdrop-filter: blur
 .mobile-menu-link:focus-visible, .faq-question:focus-visible,
 .toggle-switch:focus-visible, .faq-toggle-all:focus-visible {
   outline: 2px solid var(--silver); outline-offset: 3px;
+}
+
+
+/* Ensure the body expands naturally */
+body.syllabus-body {
+  min-height: 100vh;
+  height: auto;
+  overflow-y: auto;
+}
+
+/* Remove fixed heights and custom overflow on hero/main */
+.main,
+.syllabus-hero {
+  height: auto;
+  min-height: 100%;
+  overflow: visible;
+  padding-top: 4rem; /* Remove overflow: scroll/auto here */
 }
